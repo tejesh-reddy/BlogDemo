@@ -17,6 +17,7 @@ public class Details {
     private ActionInteractor actionInterface;
 
 
+    // setters and getters
     public void setUser(Username username) {
         this.username = username;
         actionInterface = new ActionInteractor(new DetailsPrompt());
@@ -34,6 +35,7 @@ public class Details {
         return this.password;
     }
 
+    // actions
     public Action getActionToDo() throws Exception {
         return actionInterface.getAction();
     }
@@ -48,18 +50,14 @@ public class Details {
 class ActionSupport
 {
     private static Action action;
-    private enum ActionOpt {CREATE, READ};
+    private enum ActionOpt {CREATE, READ}
 
 
     public static void setAction(ActionOpt opt)
     {
-        switch (opt){
-            case CREATE:
-                action = new CreateBlogAction();
-                break;
-            case READ:
-                action = new ReadNextBlog();
-                break;
+        switch (opt) {
+            case CREATE -> action = new CreateBlogAction();
+            case READ -> action = new ReadNextBlog();
         }
     }
 
@@ -68,6 +66,7 @@ class ActionSupport
         return action;
     }
 
+    // showing options
     public static void showOptions()
     {
         int i = 0;
@@ -77,6 +76,7 @@ class ActionSupport
         }
     }
 
+    // extracting options
     public static ActionOpt selectedOpt(int selection) throws Exception{
         int i = 1;
         for(ActionOpt op: ActionOpt.values()){
