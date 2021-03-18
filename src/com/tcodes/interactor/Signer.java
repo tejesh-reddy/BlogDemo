@@ -1,4 +1,4 @@
-package com.tcodes.signer;
+package com.tcodes.interactor;
 
 import com.tcodes.prompts.Prompt;
 import com.tcodes.user.Details;
@@ -7,13 +7,12 @@ import com.tcodes.user.Username;
 
 import java.util.Scanner;
 
-public class Signer {
-    private Prompt prompt;
-    private Details deets;
+public class Signer extends SimpleInteractor{
+    private final Details deets;
 
-    Signer(Prompt p)
+    public Signer(Prompt p)
     {
-        this.prompt = p;
+        super(p);
         deets = new Details();
     }
     public Details run()
@@ -23,8 +22,9 @@ public class Signer {
         Password password;
 
        // get details from user
+        showPrompt();
         uname = getUsername(s);
-        password = deets.getPassword(s);
+        password = getPassword(s);
 
         // package the details
         deets.setPassword(password);
@@ -40,7 +40,12 @@ public class Signer {
 
     private Password getPassword(Scanner s)
     {
-        prompt.passwordPrompt();
+        prompt.secondaryPrompt();
         return new Password(s.next());
+    }
+
+    @Override
+    public void showPrompt() {
+        System.out.println("Hello! Welcome to SignIn prompt");
     }
 }

@@ -7,7 +7,7 @@ public class LoginPrompt implements Prompt{
         System.out.println("Enter user name: ");
     }
 
-    public void passwordPrompt() {
+    public void secondaryPrompt() {
         System.out.println("Enter password");
     }
 

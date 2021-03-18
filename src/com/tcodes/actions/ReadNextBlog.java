@@ -2,7 +2,7 @@ package com.tcodes.actions;
 
 import com.tcodes.user.Details;
 
-public class readNextBlog implements Action{
+public class ReadNextBlog implements Action{
     /* reads a new blog from the list */
     @Override
     public void doit(Details d) {
